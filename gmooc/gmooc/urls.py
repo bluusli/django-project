@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.views.static import serve
 
 from users.views import LoginView,RegisterView,ActiveUserView,ForgetPwdView,ResetView,ModifyPwdView,LogoutView
-from organization.views import OrgListView
+from gmooc.settings import MEDIA_ROOT
 
 import xadmin
 
@@ -42,7 +43,12 @@ urlpatterns = [
     # 退出登录url
     url(r'logout/$',LogoutView.as_view(),name='logout'),
 
-    # 课程机构首页url
-    url(r'org_list/$', OrgListView.as_view(), name='org_list'),
+    # 课程机构url配置
+    url(r'^org/', include('organization.urls',namespace="org")),
+
+    # 配置上传文件的访问处理函数
+    url(r'^media/(?P<path>.*)',serve,{"document_root":MEDIA_ROOT})
+
+    #
 
 ]

@@ -1,0 +1,38 @@
+captcha验证码模块
+
+  github: https://django-simple-captcha.readthedocs.io/en/latest/usage.html
+    
+    安装: pip install django-simple-captcha==0.5.5
+    
+    sttings.py中添加APP  'captcha'
+    
+    urls.py 添加  url(r'^captcha/', include('captcha.urls')),
+
+    forms.py 导入  from captcha.fields import CaptchaField
+	     添加字段	captcha = CaptchaField()
+
+
+
+pure_pagination分页模块
+
+  github: https://github.com/jamespacileo/django-pure-pagination
+
+    安装: pip install django-pure-pagination
+
+    sttings.py中添加APP  'pure_pagination'
+
+    from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
+    
+    all_orgs = CourseOrg.objects.all()
+
+    # 对页面进行分页
+        try:
+            page = request.GET.get('page', 1)
+        except PageNotAnInteger:
+            page = 1
+
+        p = Paginator(all_orgs,5, request=request,)
+
+        orgs = p.page(page)
+
+        return render(request,'org-list.html',{"all_orgs":orgs,})
