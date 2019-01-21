@@ -11,7 +11,7 @@
  Target Server Version : 50723
  File Encoding         : 65001
 
- Date: 18/01/2019 17:39:46
+ Date: 21/01/2019 17:23:06
 */
 
 SET NAMES utf8mb4;
@@ -195,7 +195,12 @@ CREATE TABLE `courses_courseresource`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `courses_courseresource_course_id_5eba1332_fk_courses_courses_id`(`course_id`) USING BTREE,
   CONSTRAINT `courses_courseresource_course_id_5eba1332_fk_courses_courses_id` FOREIGN KEY (`course_id`) REFERENCES `courses_courses` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of courses_courseresource
+-- ----------------------------
+INSERT INTO `courses_courseresource` VALUES (1, '前端资料', 'course/resource/media.zip', '2019-01-21 15:16:00.000000', 13);
 
 -- ----------------------------
 -- Table structure for courses_courses
@@ -214,27 +219,34 @@ CREATE TABLE `courses_courses`  (
   `click_nums` int(11) NOT NULL,
   `add_time` datetime(6) NOT NULL,
   `course_org_id` int(11) NULL DEFAULT NULL,
+  `category` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `tag` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `teacher_id` int(11) NULL DEFAULT NULL,
+  `teacher_tell` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `youneed_know` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `courses_courses_course_org_id_c2604c80_fk_organizat`(`course_org_id`) USING BTREE,
-  CONSTRAINT `courses_courses_course_org_id_c2604c80_fk_organizat` FOREIGN KEY (`course_org_id`) REFERENCES `organization_courseorg` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `courses_courses_teacher_id_b26c5f4a_fk_organization_teacher_id`(`teacher_id`) USING BTREE,
+  CONSTRAINT `courses_courses_course_org_id_c2604c80_fk_organizat` FOREIGN KEY (`course_org_id`) REFERENCES `organization_courseorg` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `courses_courses_teacher_id_b26c5f4a_fk_organization_teacher_id` FOREIGN KEY (`teacher_id`) REFERENCES `organization_teacher` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of courses_courses
 -- ----------------------------
-INSERT INTO `courses_courses` VALUES (1, 'django', 'python-django', '入门学习', 1, 4, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135.jpg', 0, '2019-01-14 19:36:00.000000', 1);
-INSERT INTO `courses_courses` VALUES (2, 'Java入门(一)', '向Java初学者讲述了如何才能真正理解和掌握Java语言', '本书是一本与众不同的Java入门好书。作者以独特的视角，向Java初学者讲述了如何才能真正理解和掌握Java语言。另外，作者专门录制了近16小时的多媒体语音教学视频帮助读者直观地学习。这些视频和书中的源代码一起收录于本书的DVD光盘中。\r\n《Java入门》是臧萌编著的一本图书。该书适合广大想学习一门编程语言的读者、没有任何基础的Java入门读者、Java自学人员、从其他语言转向Java语言的读者、大中专院校的学生和社会培训学生。', 1, 60, 0, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135.jpg', 0, '2019-01-18 16:32:00.000000', 2);
-INSERT INTO `courses_courses` VALUES (3, 'MySQL复制功能', 'MySQL是一种关系数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。', 'MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件。\r\nMySQL是一种关系数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。\r\nMySQL所使用的 SQL 语言是用于访问数据库的最常用标准化语言。MySQL 软件采用了双授权政策，分为社区版和商业版，由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发都选择 MySQL 作为网站数据库。', 2, 120, 0, 0, 'courses/2019/01/mysql.jpg', 0, '2019-01-18 16:38:00.000000', 5);
-INSERT INTO `courses_courses` VALUES (4, 'Python入门(一)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_WcjtG9o.jpg', 0, '2019-01-18 16:41:00.000000', 6);
-INSERT INTO `courses_courses` VALUES (5, 'Python入门(二)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_MSIqfvw.jpg', 0, '2019-01-18 16:43:00.000000', 6);
-INSERT INTO `courses_courses` VALUES (6, 'Python入门(三)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_mvvGYHL.jpg', 0, '2019-01-18 16:43:00.000000', 6);
-INSERT INTO `courses_courses` VALUES (7, 'Python入门(四)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_n0L8vbw.jpg', 0, '2019-01-18 16:44:00.000000', 6);
-INSERT INTO `courses_courses` VALUES (8, 'Python入门(五)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_wH52IED.jpg', 0, '2019-01-18 16:45:00.000000', 6);
-INSERT INTO `courses_courses` VALUES (9, 'Java入门(二)', 'ava具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点 [2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等', 'Java看起来设计得很像C++，但是为了使语言小和容易熟悉，设计者们把C++语言中许多可用的特征去掉了，这些特征是一般程序员很少使用的。例如，Java不支持go to语句，代之以提供break和continue语句以及异常处理。Java还剔除了C++的操作符过载（overload）和多继承特征，并且不使用主文件，免去了预处理程序。因为Java没有结构，数组和串都是对象，所以不需要指针。Java能够自动处理对象的引用和间接引用，实现自动的无用单元收集，使用户不必为存储管理问题烦恼，能更多的时间和精力花在研发上。', 2, 120, 0, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135_0nFiBSI.jpg', 0, '2019-01-18 16:45:00.000000', 2);
-INSERT INTO `courses_courses` VALUES (10, 'Java入门(三)', 'Java具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点 [2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等', 'Java看起来设计得很像C++，但是为了使语言小和容易熟悉，设计者们把C++语言中许多可用的特征去掉了，这些特征是一般程序员很少使用的。例如，Java不支持go to语句，代之以提供break和continue语句以及异常处理。Java还剔除了C++的操作符过载（overload）和多继承特征，并且不使用主文件，免去了预处理程序。因为Java没有结构，数组和串都是对象，所以不需要指针。Java能够自动处理对象的引用和间接引用，实现自动的无用单元收集，使用户不必为存储管理问题烦恼，能更多的时间和精力花在研发上。', 2, 120, 0, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135_dHfj8Nq.jpg', 0, '2019-01-18 16:48:00.000000', 2);
-INSERT INTO `courses_courses` VALUES (11, 'Python面向对象', 'Python是一种面向对象、解释型的程序设计语言，它已经被成功应用于科学计算、数据分析以及游戏开发等诸多领域。', '本书深入介绍Python语言的面向对象特性，全书分3个部分共18章。第1部分讲述用特殊方法实现Python风格的类，分别介绍了__init__()方法、与Python无缝集成—基本特殊方法、属性访问和特性及修饰符、抽象基类设计的一致性、可调用对象和上下文的使用、创建容器和集合、创建数值类型、装饰器和mixin—横切方面；第2部分讲述持久化和序列化，分别介绍了序列化和保存、用Shelve保存和获取对象、用SQLite保存和获取对象、传输和共享对象、配置文件和持久化；第3部分讲述测试、调试、部署和维护，分别介绍了Logging和Warning模块、可测试性的设计、使用命令行、模块和包的设计、质量和文档。', 3, 180, 0, 0, 'courses/2019/01/python面向对象.jpg', 0, '2019-01-18 16:48:00.000000', 4);
-INSERT INTO `courses_courses` VALUES (12, 'Python文件处理', 'ython是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发', '系统编程：提供API（Application Programming Interface应用程序编程接口），能方便进行系统维护和管理，Linux下标志性语言之一，是很多系统管理员理想的编程工具。\r\n图形处理：有PIL、Tkinter等图形库支持，能方便进行图形处理。\r\n数学处理：NumPy扩展提供大量与许多标准数学库的接口。\r\n文本处理：python提供的re模块能支持正则表达式，还提供SGML，XML分析模块，许多程序员利用python进行XML程序的开发。\r\n数据库编程：程序员可通过遵循Python DB-API（数据库应用程序编程接口）规范的模块与Microsoft SQL Server，Oracle，Sybase，DB2，MySQL、SQLite等数据库通信。python自带有一个Gadfly模块，提供了一个完整的SQL环境。\r\n网络编程：提供丰富的模块支持sockets编程，能方便快速地开发分布式应用程序。很多大规模软件开发计划例如Zope，Mnet 及BitTorrent. Google都在广泛地使用它。\r\nWeb编程：应用的开发语言，支持最新的XML技术。\r\n多媒体应用：Python的PyOpenGL模块封装了“OpenGL应用程序编程接口”，能进行二维和三维图像处理。PyGame模块可用于编写游戏软件。\r\npymo引擎：PYMO全称为python memories off，是一款运行于Symbian S60V3,Symbian3,S60V5, Symbian3, Android系统上的AVG游戏引擎。因其基于python2.0平台开发，并且适用于创建秋之回忆（memories off）风格的AVG游戏，故命名为PYMO。\r\n黑客编程：python有一个hack的库,内置了你熟悉的或不熟悉的函数，但是缺少成就感。', 3, 240, 0, 0, 'courses/2019/01/python文件处理.jpg', 0, '2019-01-18 16:50:00.000000', 3);
-INSERT INTO `courses_courses` VALUES (13, 'Python的错误和异常', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。\r\n基于C的Python编译出的字节码文件，通常是.pyc格式。\r\n除此之外，Python还可以以交互模式运行，比如主流操作系统Unix/Linux、Mac、Windows都可以直接在命令模式下直接运行Python交互环境。直接下达操作指令即可实现交互操作。', 3, 120, 0, 0, 'courses/2019/01/python错误和异常.jpg', 0, '2019-01-18 16:51:00.000000', 7);
+INSERT INTO `courses_courses` VALUES (1, 'django', 'python-django', '入门学习', 1, 4, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135.jpg', 0, '2019-01-14 19:36:00.000000', 1, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (2, 'Java入门(一)', '向Java初学者讲述了如何才能真正理解和掌握Java语言', '本书是一本与众不同的Java入门好书。作者以独特的视角，向Java初学者讲述了如何才能真正理解和掌握Java语言。另外，作者专门录制了近16小时的多媒体语音教学视频帮助读者直观地学习。这些视频和书中的源代码一起收录于本书的DVD光盘中。\r\n《Java入门》是臧萌编著的一本图书。该书适合广大想学习一门编程语言的读者、没有任何基础的Java入门读者、Java自学人员、从其他语言转向Java语言的读者、大中专院校的学生和社会培训学生。', 1, 60, 0, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135.jpg', 0, '2019-01-18 16:32:00.000000', 2, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (3, 'MySQL复制功能', 'MySQL是一种关系数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。', 'MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件。\r\nMySQL是一种关系数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。\r\nMySQL所使用的 SQL 语言是用于访问数据库的最常用标准化语言。MySQL 软件采用了双授权政策，分为社区版和商业版，由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发都选择 MySQL 作为网站数据库。', 2, 120, 0, 0, 'courses/2019/01/mysql.jpg', 0, '2019-01-18 16:38:00.000000', 5, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (4, 'Python入门(一)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_WcjtG9o.jpg', 0, '2019-01-18 16:41:00.000000', 6, '后端开发', 'Python', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (5, 'Python入门(二)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_MSIqfvw.jpg', 0, '2019-01-18 16:43:00.000000', 6, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (6, 'Python入门(三)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_mvvGYHL.jpg', 0, '2019-01-18 16:43:00.000000', 6, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (7, 'Python入门(四)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_n0L8vbw.jpg', 0, '2019-01-18 16:44:00.000000', 6, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (8, 'Python入门(五)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_wH52IED.jpg', 6, '2019-01-18 16:45:00.000000', 6, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (9, 'Java入门(二)', 'ava具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点 [2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等', 'Java看起来设计得很像C++，但是为了使语言小和容易熟悉，设计者们把C++语言中许多可用的特征去掉了，这些特征是一般程序员很少使用的。例如，Java不支持go to语句，代之以提供break和continue语句以及异常处理。Java还剔除了C++的操作符过载（overload）和多继承特征，并且不使用主文件，免去了预处理程序。因为Java没有结构，数组和串都是对象，所以不需要指针。Java能够自动处理对象的引用和间接引用，实现自动的无用单元收集，使用户不必为存储管理问题烦恼，能更多的时间和精力花在研发上。', 2, 120, 0, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135_0nFiBSI.jpg', 0, '2019-01-18 16:45:00.000000', 2, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (10, 'Java入门(三)', 'Java具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点 [2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等', 'Java看起来设计得很像C++，但是为了使语言小和容易熟悉，设计者们把C++语言中许多可用的特征去掉了，这些特征是一般程序员很少使用的。例如，Java不支持go to语句，代之以提供break和continue语句以及异常处理。Java还剔除了C++的操作符过载（overload）和多继承特征，并且不使用主文件，免去了预处理程序。因为Java没有结构，数组和串都是对象，所以不需要指针。Java能够自动处理对象的引用和间接引用，实现自动的无用单元收集，使用户不必为存储管理问题烦恼，能更多的时间和精力花在研发上。', 2, 120, 0, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135_dHfj8Nq.jpg', 2, '2019-01-18 16:48:00.000000', 2, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (11, 'Python面向对象', 'Python是一种面向对象、解释型的程序设计语言，它已经被成功应用于科学计算、数据分析以及游戏开发等诸多领域。', '本书深入介绍Python语言的面向对象特性，全书分3个部分共18章。第1部分讲述用特殊方法实现Python风格的类，分别介绍了__init__()方法、与Python无缝集成—基本特殊方法、属性访问和特性及修饰符、抽象基类设计的一致性、可调用对象和上下文的使用、创建容器和集合、创建数值类型、装饰器和mixin—横切方面；第2部分讲述持久化和序列化，分别介绍了序列化和保存、用Shelve保存和获取对象、用SQLite保存和获取对象、传输和共享对象、配置文件和持久化；第3部分讲述测试、调试、部署和维护，分别介绍了Logging和Warning模块、可测试性的设计、使用命令行、模块和包的设计、质量和文档。', 3, 180, 0, 0, 'courses/2019/01/python面向对象.jpg', 0, '2019-01-18 16:48:00.000000', 4, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (12, 'Python文件处理', 'ython是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发', '系统编程：提供API（Application Programming Interface应用程序编程接口），能方便进行系统维护和管理，Linux下标志性语言之一，是很多系统管理员理想的编程工具。\r\n图形处理：有PIL、Tkinter等图形库支持，能方便进行图形处理。\r\n数学处理：NumPy扩展提供大量与许多标准数学库的接口。\r\n文本处理：python提供的re模块能支持正则表达式，还提供SGML，XML分析模块，许多程序员利用python进行XML程序的开发。\r\n数据库编程：程序员可通过遵循Python DB-API（数据库应用程序编程接口）规范的模块与Microsoft SQL Server，Oracle，Sybase，DB2，MySQL、SQLite等数据库通信。python自带有一个Gadfly模块，提供了一个完整的SQL环境。\r\n网络编程：提供丰富的模块支持sockets编程，能方便快速地开发分布式应用程序。很多大规模软件开发计划例如Zope，Mnet 及BitTorrent. Google都在广泛地使用它。\r\nWeb编程：应用的开发语言，支持最新的XML技术。\r\n多媒体应用：Python的PyOpenGL模块封装了“OpenGL应用程序编程接口”，能进行二维和三维图像处理。PyGame模块可用于编写游戏软件。\r\npymo引擎：PYMO全称为python memories off，是一款运行于Symbian S60V3,Symbian3,S60V5, Symbian3, Android系统上的AVG游戏引擎。因其基于python2.0平台开发，并且适用于创建秋之回忆（memories off）风格的AVG游戏，故命名为PYMO。\r\n黑客编程：python有一个hack的库,内置了你熟悉的或不熟悉的函数，但是缺少成就感。', 3, 240, 0, 0, 'courses/2019/01/python文件处理.jpg', 3, '2019-01-18 16:50:00.000000', 3, '后端开发', '', NULL, '', '');
+INSERT INTO `courses_courses` VALUES (13, 'Python的错误和异常', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。\r\n基于C的Python编译出的字节码文件，通常是.pyc格式。\r\n除此之外，Python还可以以交互模式运行，比如主流操作系统Unix/Linux、Mac、Windows都可以直接在命令模式下直接运行Python交互环境。直接下达操作指令即可实现交互操作。', 3, 120, 0, 0, 'courses/2019/01/python错误和异常.jpg', 58, '2019-01-18 16:51:00.000000', 7, '后端开发', 'Python', 1, 'python的进阶开发', 'python基础你需要有');
 
 -- ----------------------------
 -- Table structure for courses_lesson
@@ -248,7 +260,13 @@ CREATE TABLE `courses_lesson`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `courses_lesson_course_id_16bc4882_fk_courses_courses_id`(`course_id`) USING BTREE,
   CONSTRAINT `courses_lesson_course_id_16bc4882_fk_courses_courses_id` FOREIGN KEY (`course_id`) REFERENCES `courses_courses` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of courses_lesson
+-- ----------------------------
+INSERT INTO `courses_lesson` VALUES (1, '第一章 基础知识', '2019-01-21 14:51:00.000000', 13);
+INSERT INTO `courses_lesson` VALUES (2, '第二章 进阶开发', '2019-01-21 14:52:00.000000', 13);
 
 -- ----------------------------
 -- Table structure for courses_video
@@ -259,10 +277,20 @@ CREATE TABLE `courses_video`  (
   `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `add_time` datetime(6) NOT NULL,
   `lesson_id` int(11) NOT NULL,
+  `url` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `learn_time` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `courses_video_lesson_id_59f2396e_fk_courses_lesson_id`(`lesson_id`) USING BTREE,
   CONSTRAINT `courses_video_lesson_id_59f2396e_fk_courses_lesson_id` FOREIGN KEY (`lesson_id`) REFERENCES `courses_lesson` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of courses_video
+-- ----------------------------
+INSERT INTO `courses_video` VALUES (1, '1.1 hello world', '2019-01-21 14:55:00.000000', 1, 'http://www.imooc.com/video/1430', 30);
+INSERT INTO `courses_video` VALUES (2, '1.1 hello 1', '2019-01-21 14:56:00.000000', 1, 'http://www.imooc.com/video/1430', 30);
+INSERT INTO `courses_video` VALUES (3, '2.1 test', '2019-01-21 14:57:00.000000', 2, 'http://www.imooc.com/video/1430', 20);
+INSERT INTO `courses_video` VALUES (4, '2.2 test2', '2019-01-21 14:57:00.000000', 2, 'http://www.imooc.com/video/1430', 20);
 
 -- ----------------------------
 -- Table structure for django_admin_log
@@ -335,7 +363,7 @@ CREATE TABLE `django_migrations`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of django_migrations
@@ -369,6 +397,13 @@ INSERT INTO `django_migrations` VALUES (26, 'organization', '0003_auto_20190117_
 INSERT INTO `django_migrations` VALUES (27, 'organization', '0004_auto_20190117_1447', '2019-01-17 14:47:20.799714');
 INSERT INTO `django_migrations` VALUES (28, 'courses', '0003_courses_course_org', '2019-01-18 10:19:30.408429');
 INSERT INTO `django_migrations` VALUES (29, 'organization', '0005_teacher_image', '2019-01-18 12:02:40.063856');
+INSERT INTO `django_migrations` VALUES (30, 'courses', '0004_courses_category', '2019-01-21 10:27:47.969822');
+INSERT INTO `django_migrations` VALUES (31, 'courses', '0005_courses_tag', '2019-01-21 10:55:09.689960');
+INSERT INTO `django_migrations` VALUES (32, 'courses', '0006_video_url', '2019-01-21 14:55:02.569060');
+INSERT INTO `django_migrations` VALUES (33, 'organization', '0006_auto_20190121_1454', '2019-01-21 14:55:02.625934');
+INSERT INTO `django_migrations` VALUES (34, 'courses', '0007_video_learn_time', '2019-01-21 15:09:15.205426');
+INSERT INTO `django_migrations` VALUES (35, 'courses', '0008_courses_teacher', '2019-01-21 15:26:57.376541');
+INSERT INTO `django_migrations` VALUES (36, 'courses', '0009_auto_20190121_1532', '2019-01-21 15:32:10.297875');
 
 -- ----------------------------
 -- Table structure for django_session
@@ -385,7 +420,7 @@ CREATE TABLE `django_session`  (
 -- ----------------------------
 -- Records of django_session
 -- ----------------------------
-INSERT INTO `django_session` VALUES ('7bzliom8w0sg7x4stpq43vo9f5j9l38v', 'ZTA5YjFkYTU2Y2M3ODU0Yjg4YTYwMjNlMzA2ZGVlM2RiYjA2MDA0NTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoidXNlcnMudmlld3MuQ3VzdG9tQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjJlYTZmN2YyOTEzZTRkNTZlNTE2ZWRmY2RkMWVkZjE4OWVkZDc2NTciLCJMSVNUX1FVRVJZIjpbWyJjb3Vyc2VzIiwiY291cnNlcyJdLCJfY29scz1uYW1lLmRlZ3JlZS5sZWFybl90aW1lLnN0dWRlbnRzLmZhdl9udW1zLmltYWdlLmNsaWNrX251bXMuYWRkX3RpbWUiXX0=', '2019-02-01 16:53:12.499441');
+INSERT INTO `django_session` VALUES ('twwbtxikswr6dqipzbt7bpd7q7u6emxz', 'ZmU5YTBmZGU4ZjcxNGRlNjk5ZDY4Y2JmZWE5NjFlM2I2OTk2ZTI3MDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoidXNlcnMudmlld3MuQ3VzdG9tQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjJlYTZmN2YyOTEzZTRkNTZlNTE2ZWRmY2RkMWVkZjE4OWVkZDc2NTcifQ==', '2019-02-04 16:47:31.589111');
 
 -- ----------------------------
 -- Table structure for operation_coursecomments
@@ -402,7 +437,13 @@ CREATE TABLE `operation_coursecomments`  (
   INDEX `operation_coursecomm_user_id_f5ff70b3_fk_users_use`(`user_id`) USING BTREE,
   CONSTRAINT `operation_coursecomm_course_id_c88f1b6a_fk_courses_c` FOREIGN KEY (`course_id`) REFERENCES `courses_courses` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `operation_coursecomm_user_id_f5ff70b3_fk_users_use` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of operation_coursecomments
+-- ----------------------------
+INSERT INTO `operation_coursecomments` VALUES (1, 'as大叔大婶多', '2019-01-21 16:15:35.742391', 13, 1);
+INSERT INTO `operation_coursecomments` VALUES (2, 'good', '2019-01-21 16:21:51.204566', 13, 1);
 
 -- ----------------------------
 -- Table structure for operation_userask
@@ -436,7 +477,13 @@ CREATE TABLE `operation_usercourse`  (
   INDEX `operation_usercourse_user_id_835fe81a_fk_users_userprofile_id`(`user_id`) USING BTREE,
   CONSTRAINT `operation_usercourse_course_id_9f1eab2e_fk_courses_courses_id` FOREIGN KEY (`course_id`) REFERENCES `courses_courses` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `operation_usercourse_user_id_835fe81a_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of operation_usercourse
+-- ----------------------------
+INSERT INTO `operation_usercourse` VALUES (1, '2019-01-21 10:34:00.000000', 13, 1);
+INSERT INTO `operation_usercourse` VALUES (2, '2019-01-21 16:47:42.390251', 12, 1);
 
 -- ----------------------------
 -- Table structure for operation_userfavorite
@@ -451,12 +498,14 @@ CREATE TABLE `operation_userfavorite`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `operation_userfavorite_user_id_ad46a6af_fk_users_userprofile_id`(`user_id`) USING BTREE,
   CONSTRAINT `operation_userfavorite_user_id_ad46a6af_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of operation_userfavorite
 -- ----------------------------
 INSERT INTO `operation_userfavorite` VALUES (8, 1, 2, '2019-01-18 15:49:03.760226', 1);
+INSERT INTO `operation_userfavorite` VALUES (12, 13, 1, '2019-01-21 11:06:34.610142', 1);
+INSERT INTO `operation_userfavorite` VALUES (14, 7, 2, '2019-01-21 11:14:44.604427', 1);
 
 -- ----------------------------
 -- Table structure for operation_usermessage
@@ -628,7 +677,7 @@ CREATE TABLE `users_userprofile`  (
 -- ----------------------------
 -- Records of users_userprofile
 -- ----------------------------
-INSERT INTO `users_userprofile` VALUES (1, 'pbkdf2_sha256$36000$6LJrZFs0hx6y$Z9uzKIILbfaIXwwJ2FYuzabvIH/DBfE6Y4kd/mkhIp4=', '2019-01-18 16:03:11.809977', 1, 'bluusli', '', '', '', 1, 1, '2019-01-14 08:06:03.522705', '', NULL, 1, '', NULL, 'image/default.png');
+INSERT INTO `users_userprofile` VALUES (1, 'pbkdf2_sha256$36000$6LJrZFs0hx6y$Z9uzKIILbfaIXwwJ2FYuzabvIH/DBfE6Y4kd/mkhIp4=', '2019-01-21 16:47:31.537248', 1, 'bluusli', '', '', '', 1, 1, '2019-01-14 08:06:03.522705', '', NULL, 1, '', NULL, 'courses/2019/01/540e57300001d6d906000338-240-135.jpg');
 INSERT INTO `users_userprofile` VALUES (2, 'pbkdf2_sha256$36000$VWvIoee1YO5R$047I4XiQLJMGMkdNZOGJwU6a2SS5qmz2X20KmzkNchg=', '2019-01-16 17:33:45.616314', 0, 'bluus_li@sina.com', '', '', 'bluus_li@sina.com', 0, 1, '2019-01-16 10:05:42.854391', '', NULL, 1, '', NULL, 'image/default.png');
 
 -- ----------------------------
@@ -699,7 +748,7 @@ CREATE TABLE `xadmin_log`  (
   INDEX `xadmin_log_user_id_bb16a176_fk_users_userprofile_id`(`user_id`) USING BTREE,
   CONSTRAINT `xadmin_log_content_type_id_2a6cb852_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `xadmin_log_user_id_bb16a176_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of xadmin_log
@@ -742,6 +791,18 @@ INSERT INTO `xadmin_log` VALUES (35, '2019-01-18 16:48:37.920887', '127.0.0.1', 
 INSERT INTO `xadmin_log` VALUES (36, '2019-01-18 16:50:01.156962', '127.0.0.1', '11', 'Python面向对象', 'create', '已添加。', 10, 1);
 INSERT INTO `xadmin_log` VALUES (37, '2019-01-18 16:51:47.777837', '127.0.0.1', '12', 'Python文件处理', 'create', '已添加。', 10, 1);
 INSERT INTO `xadmin_log` VALUES (38, '2019-01-18 16:53:06.007783', '127.0.0.1', '13', 'Python的错误和异常', 'create', '已添加。', 10, 1);
+INSERT INTO `xadmin_log` VALUES (39, '2019-01-21 10:36:06.321256', '127.0.0.1', '1', 'UserCourse object', 'create', '已添加。', 19, 1);
+INSERT INTO `xadmin_log` VALUES (40, '2019-01-21 14:52:33.539511', '127.0.0.1', '1', '第一章 基础知识', 'create', '已添加。', 12, 1);
+INSERT INTO `xadmin_log` VALUES (41, '2019-01-21 14:52:46.212629', '127.0.0.1', '2', '第二章 进阶开发', 'create', '已添加。', 12, 1);
+INSERT INTO `xadmin_log` VALUES (42, '2019-01-21 14:56:11.073903', '127.0.0.1', '1', 'Video object', 'create', '已添加。', 9, 1);
+INSERT INTO `xadmin_log` VALUES (43, '2019-01-21 14:57:20.363646', '127.0.0.1', '2', 'Video object', 'create', '已添加。', 9, 1);
+INSERT INTO `xadmin_log` VALUES (44, '2019-01-21 14:57:31.872875', '127.0.0.1', '3', 'Video object', 'create', '已添加。', 9, 1);
+INSERT INTO `xadmin_log` VALUES (45, '2019-01-21 14:57:42.929316', '127.0.0.1', '4', 'Video object', 'create', '已添加。', 9, 1);
+INSERT INTO `xadmin_log` VALUES (46, '2019-01-21 15:09:49.719148', '127.0.0.1', '4', 'Video object', 'change', '修改 learn_time', 9, 1);
+INSERT INTO `xadmin_log` VALUES (47, '2019-01-21 15:09:55.030945', '127.0.0.1', '3', 'Video object', 'change', '修改 learn_time', 9, 1);
+INSERT INTO `xadmin_log` VALUES (48, '2019-01-21 15:09:59.307507', '127.0.0.1', '2', 'Video object', 'change', '修改 learn_time', 9, 1);
+INSERT INTO `xadmin_log` VALUES (49, '2019-01-21 15:10:03.789529', '127.0.0.1', '1', 'Video object', 'change', '修改 learn_time', 9, 1);
+INSERT INTO `xadmin_log` VALUES (50, '2019-01-21 15:18:08.723986', '127.0.0.1', '1', 'CourseResource object', 'create', '已添加。', 11, 1);
 
 -- ----------------------------
 -- Table structure for xadmin_usersettings
