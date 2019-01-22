@@ -137,19 +137,16 @@
                     {% for relate in relate_course %}
                         <dl>
                             <dt>
-                                <a target="_blank" href="">
+                                <a target="_blank" href="{% url 'course:course_detail' relate.id %}">
                                     <img width="240" height="220" class="scrollLoading" src="{{ MEDIA_URL }}{{ relate.image }}"/>
                                 </a>
                             </dt>
                             <dd>
-                                <a target="_blank" href=""><h2> {{ relate.name }}</h2></a>
+                                <a target="_blank" href="{% url 'course:course_detail' relate.id %}"><h2> {{ relate.name }}</h2></a>
                                 <span class="fl">学习时长：<i class="key">{{ relate.learn_time }}</i></span>
                             </dd>
                         </dl>
                     {% endfor %}
-
-
-
                 </div>
 			</div>
 		</div>
