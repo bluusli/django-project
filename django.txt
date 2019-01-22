@@ -36,3 +36,19 @@ pure_pagination分页模块
         orgs = p.page(page)
 
         return render(request,'org-list.html',{"all_orgs":orgs,})
+
+
+   $.ajax(
+   {
+      type:"GET",//通常会用到两种：GET,POST。默认是：GET
+      url:"a.php",//(默认: 当前页地址) 发送请求的地址
+      dataType:"html",//预期服务器返回的数据类型。
+      beforeSend:beforeSend, //发送请求
+		如果是POST请求添加: function(xhr, settings){
+                				xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+          					  },
+	
+      success:callback, //请求成功
+      error:error,//请求出错 
+      complete:complete//请求完成
+   });
