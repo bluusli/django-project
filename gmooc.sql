@@ -11,7 +11,7 @@
  Target Server Version : 50723
  File Encoding         : 65001
 
- Date: 22/01/2019 17:56:36
+ Date: 25/01/2019 14:09:19
 */
 
 SET NAMES utf8mb4;
@@ -173,14 +173,19 @@ CREATE TABLE `captcha_captchastore`  (
   `expiration` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `hashkey`(`hashkey`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 48 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of captcha_captchastore
 -- ----------------------------
-INSERT INTO `captcha_captchastore` VALUES (36, 'GRMV', 'grmv', '2e2a03f30b9f017b630dd0ead684ac148c3131dd', '2019-01-16 17:36:07.130101');
-INSERT INTO `captcha_captchastore` VALUES (37, 'FUSG', 'fusg', '74ded158836db79bf788565d579152ce1957cc55', '2019-01-16 17:36:30.725009');
-INSERT INTO `captcha_captchastore` VALUES (38, 'YWJI', 'ywji', '5092f75e3da864b07c7f0ab415c17937fab7a6fa', '2019-01-16 17:36:33.997258');
+INSERT INTO `captcha_captchastore` VALUES (39, 'JDRC', 'jdrc', '2a0ca97783df5f1b0e282c7ecd3e0c68d511d1e4', '2019-01-25 11:28:25.194397');
+INSERT INTO `captcha_captchastore` VALUES (40, 'ASFJ', 'asfj', '6260cd8d5c949a4b8188af20299aabef3cd3ac44', '2019-01-25 11:28:29.663020');
+INSERT INTO `captcha_captchastore` VALUES (41, 'GHON', 'ghon', '722172b948a920a1db5a8bb133f688fece8d2ea4', '2019-01-25 11:28:34.585417');
+INSERT INTO `captcha_captchastore` VALUES (42, 'PUYF', 'puyf', 'f2da320fcc4e32a479add88aab727b6ede48d210', '2019-01-25 11:28:47.373915');
+INSERT INTO `captcha_captchastore` VALUES (43, 'KUHX', 'kuhx', '5111ccab5bf6ef200a9042686605aea0f40bc959', '2019-01-25 11:28:51.083063');
+INSERT INTO `captcha_captchastore` VALUES (44, 'WZQM', 'wzqm', '65953164fb5682430409236a0bbaa1a64a214837', '2019-01-25 11:30:55.294170');
+INSERT INTO `captcha_captchastore` VALUES (46, 'CCFF', 'ccff', '33742e15cf142e311c280bcf5425bd974a95a53a', '2019-01-25 11:32:09.949416');
+INSERT INTO `captcha_captchastore` VALUES (47, 'WFLU', 'wflu', 'f50751430dc91a0e0d63e0351ce142574c4564c0', '2019-01-25 11:34:02.509233');
 
 -- ----------------------------
 -- Table structure for courses_courseresource
@@ -224,6 +229,7 @@ CREATE TABLE `courses_courses`  (
   `teacher_id` int(11) NULL DEFAULT NULL,
   `teacher_tell` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `youneed_know` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `is_banner` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `courses_courses_course_org_id_c2604c80_fk_organizat`(`course_org_id`) USING BTREE,
   INDEX `courses_courses_teacher_id_b26c5f4a_fk_organization_teacher_id`(`teacher_id`) USING BTREE,
@@ -234,19 +240,19 @@ CREATE TABLE `courses_courses`  (
 -- ----------------------------
 -- Records of courses_courses
 -- ----------------------------
-INSERT INTO `courses_courses` VALUES (1, 'django', 'python-django', '入门学习', 1, 4, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135.jpg', 3, '2019-01-14 19:36:00.000000', 1, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (2, 'Java入门(一)', '向Java初学者讲述了如何才能真正理解和掌握Java语言', '本书是一本与众不同的Java入门好书。作者以独特的视角，向Java初学者讲述了如何才能真正理解和掌握Java语言。另外，作者专门录制了近16小时的多媒体语音教学视频帮助读者直观地学习。这些视频和书中的源代码一起收录于本书的DVD光盘中。\r\n《Java入门》是臧萌编著的一本图书。该书适合广大想学习一门编程语言的读者、没有任何基础的Java入门读者、Java自学人员、从其他语言转向Java语言的读者、大中专院校的学生和社会培训学生。', 1, 60, 0, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135.jpg', 0, '2019-01-18 16:32:00.000000', 2, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (3, 'MySQL复制功能', 'MySQL是一种关系数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。', 'MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件。\r\nMySQL是一种关系数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。\r\nMySQL所使用的 SQL 语言是用于访问数据库的最常用标准化语言。MySQL 软件采用了双授权政策，分为社区版和商业版，由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发都选择 MySQL 作为网站数据库。', 2, 120, 0, 0, 'courses/2019/01/mysql.jpg', 0, '2019-01-18 16:38:00.000000', 5, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (4, 'Python入门(一)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_WcjtG9o.jpg', 2, '2019-01-18 16:41:00.000000', 6, '后端开发', 'Python', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (5, 'Python入门(二)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_MSIqfvw.jpg', 0, '2019-01-18 16:43:00.000000', 6, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (6, 'Python入门(三)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_mvvGYHL.jpg', 0, '2019-01-18 16:43:00.000000', 6, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (7, 'Python入门(四)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_n0L8vbw.jpg', 0, '2019-01-18 16:44:00.000000', 6, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (8, 'Python入门(五)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_wH52IED.jpg', 8, '2019-01-18 16:45:00.000000', 6, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (9, 'Java入门(二)', 'ava具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点 [2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等', 'Java看起来设计得很像C++，但是为了使语言小和容易熟悉，设计者们把C++语言中许多可用的特征去掉了，这些特征是一般程序员很少使用的。例如，Java不支持go to语句，代之以提供break和continue语句以及异常处理。Java还剔除了C++的操作符过载（overload）和多继承特征，并且不使用主文件，免去了预处理程序。因为Java没有结构，数组和串都是对象，所以不需要指针。Java能够自动处理对象的引用和间接引用，实现自动的无用单元收集，使用户不必为存储管理问题烦恼，能更多的时间和精力花在研发上。', 2, 120, 0, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135_0nFiBSI.jpg', 0, '2019-01-18 16:45:00.000000', 2, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (10, 'Java入门(三)', 'Java具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点 [2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等', 'Java看起来设计得很像C++，但是为了使语言小和容易熟悉，设计者们把C++语言中许多可用的特征去掉了，这些特征是一般程序员很少使用的。例如，Java不支持go to语句，代之以提供break和continue语句以及异常处理。Java还剔除了C++的操作符过载（overload）和多继承特征，并且不使用主文件，免去了预处理程序。因为Java没有结构，数组和串都是对象，所以不需要指针。Java能够自动处理对象的引用和间接引用，实现自动的无用单元收集，使用户不必为存储管理问题烦恼，能更多的时间和精力花在研发上。', 2, 120, 0, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135_dHfj8Nq.jpg', 2, '2019-01-18 16:48:00.000000', 2, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (11, 'Python面向对象', 'Python是一种面向对象、解释型的程序设计语言，它已经被成功应用于科学计算、数据分析以及游戏开发等诸多领域。', '本书深入介绍Python语言的面向对象特性，全书分3个部分共18章。第1部分讲述用特殊方法实现Python风格的类，分别介绍了__init__()方法、与Python无缝集成—基本特殊方法、属性访问和特性及修饰符、抽象基类设计的一致性、可调用对象和上下文的使用、创建容器和集合、创建数值类型、装饰器和mixin—横切方面；第2部分讲述持久化和序列化，分别介绍了序列化和保存、用Shelve保存和获取对象、用SQLite保存和获取对象、传输和共享对象、配置文件和持久化；第3部分讲述测试、调试、部署和维护，分别介绍了Logging和Warning模块、可测试性的设计、使用命令行、模块和包的设计、质量和文档。', 3, 180, 0, 0, 'courses/2019/01/python面向对象.jpg', 0, '2019-01-18 16:48:00.000000', 4, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (12, 'Python文件处理', 'ython是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发', '系统编程：提供API（Application Programming Interface应用程序编程接口），能方便进行系统维护和管理，Linux下标志性语言之一，是很多系统管理员理想的编程工具。\r\n图形处理：有PIL、Tkinter等图形库支持，能方便进行图形处理。\r\n数学处理：NumPy扩展提供大量与许多标准数学库的接口。\r\n文本处理：python提供的re模块能支持正则表达式，还提供SGML，XML分析模块，许多程序员利用python进行XML程序的开发。\r\n数据库编程：程序员可通过遵循Python DB-API（数据库应用程序编程接口）规范的模块与Microsoft SQL Server，Oracle，Sybase，DB2，MySQL、SQLite等数据库通信。python自带有一个Gadfly模块，提供了一个完整的SQL环境。\r\n网络编程：提供丰富的模块支持sockets编程，能方便快速地开发分布式应用程序。很多大规模软件开发计划例如Zope，Mnet 及BitTorrent. Google都在广泛地使用它。\r\nWeb编程：应用的开发语言，支持最新的XML技术。\r\n多媒体应用：Python的PyOpenGL模块封装了“OpenGL应用程序编程接口”，能进行二维和三维图像处理。PyGame模块可用于编写游戏软件。\r\npymo引擎：PYMO全称为python memories off，是一款运行于Symbian S60V3,Symbian3,S60V5, Symbian3, Android系统上的AVG游戏引擎。因其基于python2.0平台开发，并且适用于创建秋之回忆（memories off）风格的AVG游戏，故命名为PYMO。\r\n黑客编程：python有一个hack的库,内置了你熟悉的或不熟悉的函数，但是缺少成就感。', 3, 240, 0, 0, 'courses/2019/01/python文件处理.jpg', 5, '2019-01-18 16:50:00.000000', 3, '后端开发', '', NULL, '', '');
-INSERT INTO `courses_courses` VALUES (13, 'Python的错误和异常', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。\r\n基于C的Python编译出的字节码文件，通常是.pyc格式。\r\n除此之外，Python还可以以交互模式运行，比如主流操作系统Unix/Linux、Mac、Windows都可以直接在命令模式下直接运行Python交互环境。直接下达操作指令即可实现交互操作。', 3, 120, 0, 0, 'courses/2019/01/python错误和异常.jpg', 78, '2019-01-18 16:51:00.000000', 7, '后端开发', 'Python', 1, 'python的进阶开发', 'python基础你需要有');
+INSERT INTO `courses_courses` VALUES (1, 'django', 'python-django', '入门学习', 1, 40, 7, 0, 'courses/2019/01/540e57300001d6d906000338-240-135.jpg', 22, '2019-01-14 19:36:00.000000', 1, '后端开发', '', NULL, '', '', 0);
+INSERT INTO `courses_courses` VALUES (2, 'Java入门(一)', '向Java初学者讲述了如何才能真正理解和掌握Java语言', '本书是一本与众不同的Java入门好书。作者以独特的视角，向Java初学者讲述了如何才能真正理解和掌握Java语言。另外，作者专门录制了近16小时的多媒体语音教学视频帮助读者直观地学习。这些视频和书中的源代码一起收录于本书的DVD光盘中。\r\n《Java入门》是臧萌编著的一本图书。该书适合广大想学习一门编程语言的读者、没有任何基础的Java入门读者、Java自学人员、从其他语言转向Java语言的读者、大中专院校的学生和社会培训学生。', 1, 60, 0, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135.jpg', 0, '2019-01-18 16:32:00.000000', 2, '后端开发', '', NULL, '', '', 1);
+INSERT INTO `courses_courses` VALUES (3, 'MySQL复制功能', 'MySQL是一种关系数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。', 'MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件。\r\nMySQL是一种关系数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。\r\nMySQL所使用的 SQL 语言是用于访问数据库的最常用标准化语言。MySQL 软件采用了双授权政策，分为社区版和商业版，由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发都选择 MySQL 作为网站数据库。', 2, 120, 0, 0, 'courses/2019/01/mysql.jpg', 0, '2019-01-18 16:38:00.000000', 5, '后端开发', '', NULL, '', '', 0);
+INSERT INTO `courses_courses` VALUES (4, 'Python入门(一)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_WcjtG9o.jpg', 5, '2019-01-18 16:41:00.000000', 6, '后端开发', 'Python', NULL, '', '', 0);
+INSERT INTO `courses_courses` VALUES (5, 'Python入门(二)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 1, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_MSIqfvw.jpg', 1, '2019-01-18 16:43:00.000000', 6, '后端开发', '', NULL, '', '', 0);
+INSERT INTO `courses_courses` VALUES (6, 'Python入门(三)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 0, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_mvvGYHL.jpg', 0, '2019-01-18 16:43:00.000000', 6, '后端开发', '', NULL, '', '', 0);
+INSERT INTO `courses_courses` VALUES (7, 'Python入门(四)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 1, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_n0L8vbw.jpg', 1, '2019-01-18 16:44:00.000000', 6, '后端开发', '', NULL, '', '', 0);
+INSERT INTO `courses_courses` VALUES (8, 'Python入门(五)', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。', 3, 120, 1, 0, 'courses/2019/01/540e57300001d6d906000338-240-135_wH52IED.jpg', 10, '2019-01-18 16:45:00.000000', 6, '后端开发', '', NULL, '', '', 1);
+INSERT INTO `courses_courses` VALUES (9, 'Java入门(二)', 'ava具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点 [2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等', 'Java看起来设计得很像C++，但是为了使语言小和容易熟悉，设计者们把C++语言中许多可用的特征去掉了，这些特征是一般程序员很少使用的。例如，Java不支持go to语句，代之以提供break和continue语句以及异常处理。Java还剔除了C++的操作符过载（overload）和多继承特征，并且不使用主文件，免去了预处理程序。因为Java没有结构，数组和串都是对象，所以不需要指针。Java能够自动处理对象的引用和间接引用，实现自动的无用单元收集，使用户不必为存储管理问题烦恼，能更多的时间和精力花在研发上。', 2, 120, 1, 1, 'courses/2019/01/57035ff200014b8a06000338-240-135_0nFiBSI.jpg', 1, '2019-01-18 16:45:00.000000', 2, '后端开发', '', NULL, '', '', 0);
+INSERT INTO `courses_courses` VALUES (10, 'Java入门(三)', 'Java具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点 [2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等', 'Java看起来设计得很像C++，但是为了使语言小和容易熟悉，设计者们把C++语言中许多可用的特征去掉了，这些特征是一般程序员很少使用的。例如，Java不支持go to语句，代之以提供break和continue语句以及异常处理。Java还剔除了C++的操作符过载（overload）和多继承特征，并且不使用主文件，免去了预处理程序。因为Java没有结构，数组和串都是对象，所以不需要指针。Java能够自动处理对象的引用和间接引用，实现自动的无用单元收集，使用户不必为存储管理问题烦恼，能更多的时间和精力花在研发上。', 2, 120, 5, 0, 'courses/2019/01/57035ff200014b8a06000338-240-135_dHfj8Nq.jpg', 7, '2019-01-18 16:48:00.000000', 2, '后端开发', '', NULL, '', '', 0);
+INSERT INTO `courses_courses` VALUES (11, 'Python面向对象', 'Python是一种面向对象、解释型的程序设计语言，它已经被成功应用于科学计算、数据分析以及游戏开发等诸多领域。', '本书深入介绍Python语言的面向对象特性，全书分3个部分共18章。第1部分讲述用特殊方法实现Python风格的类，分别介绍了__init__()方法、与Python无缝集成—基本特殊方法、属性访问和特性及修饰符、抽象基类设计的一致性、可调用对象和上下文的使用、创建容器和集合、创建数值类型、装饰器和mixin—横切方面；第2部分讲述持久化和序列化，分别介绍了序列化和保存、用Shelve保存和获取对象、用SQLite保存和获取对象、传输和共享对象、配置文件和持久化；第3部分讲述测试、调试、部署和维护，分别介绍了Logging和Warning模块、可测试性的设计、使用命令行、模块和包的设计、质量和文档。', 3, 180, 1, 0, 'courses/2019/01/python面向对象.jpg', 1, '2019-01-18 16:48:00.000000', 4, '后端开发', '', NULL, '', '', 0);
+INSERT INTO `courses_courses` VALUES (12, 'Python文件处理', 'ython是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发', '系统编程：提供API（Application Programming Interface应用程序编程接口），能方便进行系统维护和管理，Linux下标志性语言之一，是很多系统管理员理想的编程工具。\r\n图形处理：有PIL、Tkinter等图形库支持，能方便进行图形处理。\r\n数学处理：NumPy扩展提供大量与许多标准数学库的接口。\r\n文本处理：python提供的re模块能支持正则表达式，还提供SGML，XML分析模块，许多程序员利用python进行XML程序的开发。\r\n数据库编程：程序员可通过遵循Python DB-API（数据库应用程序编程接口）规范的模块与Microsoft SQL Server，Oracle，Sybase，DB2，MySQL、SQLite等数据库通信。python自带有一个Gadfly模块，提供了一个完整的SQL环境。\r\n网络编程：提供丰富的模块支持sockets编程，能方便快速地开发分布式应用程序。很多大规模软件开发计划例如Zope，Mnet 及BitTorrent. Google都在广泛地使用它。\r\nWeb编程：应用的开发语言，支持最新的XML技术。\r\n多媒体应用：Python的PyOpenGL模块封装了“OpenGL应用程序编程接口”，能进行二维和三维图像处理。PyGame模块可用于编写游戏软件。\r\npymo引擎：PYMO全称为python memories off，是一款运行于Symbian S60V3,Symbian3,S60V5, Symbian3, Android系统上的AVG游戏引擎。因其基于python2.0平台开发，并且适用于创建秋之回忆（memories off）风格的AVG游戏，故命名为PYMO。\r\n黑客编程：python有一个hack的库,内置了你熟悉的或不熟悉的函数，但是缺少成就感。', 3, 240, 2, 0, 'courses/2019/01/python文件处理.jpg', 10, '2019-01-18 16:50:00.000000', 3, '后端开发', '', NULL, '', '', 0);
+INSERT INTO `courses_courses` VALUES (13, 'Python的错误和异常', 'Python是一种计算机程序设计语言。是一种动态的、面向对象的脚本语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。', 'Python在执行时，首先会将.py文件中的源代码编译成Python的byte code（字节码），然后再由Python Virtual Machine（Python虚拟机）来执行这些编译好的byte code。这种机制的基本思想跟Java，.NET\r\n是一致的。然而，Python Virtual Machine与Java或.NET的Virtual Machine不同的是，Python的Virtual Machine是一种更高级的Virtual Machine。这里的高级并不是通常意义上的高级，不是说Python的Virtual Machine比Java或.NET的功能更强大，而是说和Java 或.NET相比，Python的Virtual Machine距离真实机器的距离更远。或者可以这么说，Python的Virtual Machine是一种抽象层次更高的Virtual Machine。\r\n基于C的Python编译出的字节码文件，通常是.pyc格式。\r\n除此之外，Python还可以以交互模式运行，比如主流操作系统Unix/Linux、Mac、Windows都可以直接在命令模式下直接运行Python交互环境。直接下达操作指令即可实现交互操作。', 3, 120, 7, 1, 'courses/2019/01/python错误和异常.jpg', 101, '2019-01-18 16:51:00.000000', 7, '后端开发', 'Python', 1, 'python的进阶开发', 'python基础你需要有', 1);
 
 -- ----------------------------
 -- Table structure for courses_lesson
@@ -363,7 +369,7 @@ CREATE TABLE `django_migrations`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of django_migrations
@@ -405,6 +411,9 @@ INSERT INTO `django_migrations` VALUES (34, 'courses', '0007_video_learn_time', 
 INSERT INTO `django_migrations` VALUES (35, 'courses', '0008_courses_teacher', '2019-01-21 15:26:57.376541');
 INSERT INTO `django_migrations` VALUES (36, 'courses', '0009_auto_20190121_1532', '2019-01-21 15:32:10.297875');
 INSERT INTO `django_migrations` VALUES (37, 'organization', '0007_teacher_age', '2019-01-22 10:56:31.091016');
+INSERT INTO `django_migrations` VALUES (38, 'courses', '0010_courses_is_banner', '2019-01-25 10:14:40.835055');
+INSERT INTO `django_migrations` VALUES (39, 'users', '0004_auto_20190125_1014', '2019-01-25 10:14:40.895894');
+INSERT INTO `django_migrations` VALUES (40, 'organization', '0008_courseorg_tag', '2019-01-25 10:37:03.650133');
 
 -- ----------------------------
 -- Table structure for django_session
@@ -417,11 +426,6 @@ CREATE TABLE `django_session`  (
   PRIMARY KEY (`session_key`) USING BTREE,
   INDEX `django_session_expire_date_a5c62663`(`expire_date`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of django_session
--- ----------------------------
-INSERT INTO `django_session` VALUES ('twwbtxikswr6dqipzbt7bpd7q7u6emxz', 'MWMxNjkzOGUxYjcxNzZkNDE2ZWFiYzNkMTgwNjcyNTY4NDAxMWQ4Nzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoidXNlcnMudmlld3MuQ3VzdG9tQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjJlYTZmN2YyOTEzZTRkNTZlNTE2ZWRmY2RkMWVkZjE4OWVkZDc2NTciLCJMSVNUX1FVRVJZIjpbWyJjb3Vyc2VzIiwiY291cnNlcyJdLCJfcmVsX2NvdXJzZV9vcmdfX2lkX19leGFjdD0xMCJdfQ==', '2019-02-05 15:40:12.205478');
 
 -- ----------------------------
 -- Table structure for operation_coursecomments
@@ -478,7 +482,7 @@ CREATE TABLE `operation_usercourse`  (
   INDEX `operation_usercourse_user_id_835fe81a_fk_users_userprofile_id`(`user_id`) USING BTREE,
   CONSTRAINT `operation_usercourse_course_id_9f1eab2e_fk_courses_courses_id` FOREIGN KEY (`course_id`) REFERENCES `courses_courses` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `operation_usercourse_user_id_835fe81a_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of operation_usercourse
@@ -487,6 +491,12 @@ INSERT INTO `operation_usercourse` VALUES (1, '2019-01-21 10:34:00.000000', 13, 
 INSERT INTO `operation_usercourse` VALUES (2, '2019-01-21 16:47:42.390251', 12, 1);
 INSERT INTO `operation_usercourse` VALUES (3, '2019-01-22 10:37:07.390729', 4, 1);
 INSERT INTO `operation_usercourse` VALUES (4, '2019-01-22 15:46:22.176162', 1, 1);
+INSERT INTO `operation_usercourse` VALUES (5, '2019-01-24 20:20:58.451004', 10, 1);
+INSERT INTO `operation_usercourse` VALUES (6, '2019-01-24 20:21:07.804962', 8, 1);
+INSERT INTO `operation_usercourse` VALUES (7, '2019-01-24 20:21:27.561136', 11, 1);
+INSERT INTO `operation_usercourse` VALUES (8, '2019-01-25 10:02:39.885668', 9, 1);
+INSERT INTO `operation_usercourse` VALUES (9, '2019-01-25 10:30:07.061003', 7, 1);
+INSERT INTO `operation_usercourse` VALUES (10, '2019-01-25 10:31:17.028694', 5, 1);
 
 -- ----------------------------
 -- Table structure for operation_userfavorite
@@ -501,14 +511,17 @@ CREATE TABLE `operation_userfavorite`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `operation_userfavorite_user_id_ad46a6af_fk_users_userprofile_id`(`user_id`) USING BTREE,
   CONSTRAINT `operation_userfavorite_user_id_ad46a6af_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of operation_userfavorite
 -- ----------------------------
-INSERT INTO `operation_userfavorite` VALUES (12, 13, 1, '2019-01-21 11:06:34.610142', 1);
-INSERT INTO `operation_userfavorite` VALUES (14, 7, 2, '2019-01-21 11:14:44.604427', 1);
-INSERT INTO `operation_userfavorite` VALUES (16, 1, 3, '2019-01-22 15:56:27.127575', 1);
+INSERT INTO `operation_userfavorite` VALUES (19, 1, 3, '2019-01-24 16:45:35.446536', 1);
+INSERT INTO `operation_userfavorite` VALUES (25, 1, 1, '2019-01-24 19:12:53.077092', 1);
+INSERT INTO `operation_userfavorite` VALUES (26, 1, 2, '2019-01-24 19:12:54.498289', 1);
+INSERT INTO `operation_userfavorite` VALUES (27, 13, 1, '2019-01-25 09:57:22.618230', 1);
+INSERT INTO `operation_userfavorite` VALUES (28, 7, 2, '2019-01-25 09:57:36.142984', 1);
+INSERT INTO `operation_userfavorite` VALUES (29, 9, 1, '2019-01-25 10:02:38.974807', 1);
 
 -- ----------------------------
 -- Table structure for operation_usermessage
@@ -521,7 +534,13 @@ CREATE TABLE `operation_usermessage`  (
   `has_read` tinyint(1) NOT NULL,
   `add_time` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of operation_usermessage
+-- ----------------------------
+INSERT INTO `operation_usermessage` VALUES (1, 1, '欢迎注册', 1, '2019-01-24 17:36:00.000000');
+INSERT INTO `operation_usermessage` VALUES (3, 1, '算得上是', 1, '2019-01-24 20:05:00.000000');
 
 -- ----------------------------
 -- Table structure for organization_citydict
@@ -562,6 +581,7 @@ CREATE TABLE `organization_courseorg`  (
   `catgory` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `course_nums` int(11) NOT NULL,
   `students` int(11) NOT NULL,
+  `tag` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `organization_courseo_city_id_4a842f85_fk_organizat`(`city_id`) USING BTREE,
   CONSTRAINT `organization_courseo_city_id_4a842f85_fk_organizat` FOREIGN KEY (`city_id`) REFERENCES `organization_citydict` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -570,16 +590,16 @@ CREATE TABLE `organization_courseorg`  (
 -- ----------------------------
 -- Records of organization_courseorg
 -- ----------------------------
-INSERT INTO `organization_courseorg` VALUES (1, '慕课网', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\r\n慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。\r\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_PVa3rYn.png', '北京市海淀区中关村北大街', '2019-01-17 09:52:00.000000', 1, 'pxjg', 0, 0);
-INSERT INTO `organization_courseorg` VALUES (2, '慕课网3', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_klgAUn5.png', '广州市慕课网', '2019-01-17 10:06:00.000000', 3, 'pxjg', 0, 0);
-INSERT INTO `organization_courseorg` VALUES (3, '慕课网2', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_Gn1sRjp_PZLxlSY.png', '上海市慕课网', '2019-01-17 10:08:00.000000', 2, 'gr', 0, 0);
-INSERT INTO `organization_courseorg` VALUES (4, '慕课网4', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_OO2ykYP.png', '天津市慕课网', '2019-01-17 10:08:00.000000', 4, 'pxjg', 0, 0);
-INSERT INTO `organization_courseorg` VALUES (5, '慕课网5', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_V0TJOyb.png', '成都市慕课网', '2019-01-17 10:09:00.000000', 5, 'pxjg', 0, 0);
-INSERT INTO `organization_courseorg` VALUES (6, '北京大学', '北京大学（Peking University），简称“北大”，由中华人民共和国教育部直属，中央直管副部级建制，位列“211工程”、“985工程”、“世界一流大学和一流学科”，入选“基础学科拔尖学生培养试验计划”、“高等学校创新能力提升计划”、“高等学校学科创新引智计划”，为九校联盟、中国大学校长联谊会、京港大学联盟、亚洲大学联盟、东亚研究型大学协会、国际研究型大学联盟、环太平洋大学联盟、东亚四大学论坛、国际公立大学论坛、中俄综合性大学联盟成员。\r\n北京大学创立于1898年维新变法之际，初名京师大学堂，是中国近现代第一所国立综合性大学，创办之初也是国家最高教育行政机关。1912年改为国立北京大学。1937年南迁至长沙，与国立清华大学和私立南开大学组成国立长沙临时大学，1938年迁至昆明，更名为国立西南联合大学。1946年复员返回北平。1952年经全国高校院系调整，成为以文理基础学科为主的综合性大学，并自北京城内沙滩等地迁至现址。2000年与原北京医科大学合并，组建为新的北京大学。', 0, 0, 'org/2019/01/bjdx.jpg', '北京市海淀区颐和园路5号', '2019-01-17 10:09:00.000000', 1, 'gx', 0, 0);
-INSERT INTO `organization_courseorg` VALUES (7, '清华大学', '清华大学（Tsinghua University），简称“清华”，由中华人民共和国教育部直属，中央直管副部级建制，位列“211工程”、“985工程”、“世界一流大学和一流学科”，入选“基础学科拔尖学生培养试验计划”、“高等学校创新能力提升计划”、“高等学校学科创新引智计划”，为九校联盟、中国大学校长联谊会、东亚研究型大学协会、亚洲大学联盟、环太平洋大学联盟、清华—剑桥—MIT低碳大学联盟成员，被誉为“红色工程师的摇篮”。\r\n清华大学的前身清华学堂始建于1911年，因水木清华而得名，是清政府设立的留美预备学校，其建校的资金源于1908年美国退还的部分庚子赔款。1912年更名为清华学校。1928年更名为国立清华大学。1937年抗日战争全面爆发后南迁长沙，与北京大学、南开大学组建国立长沙临时大学，1938年迁至昆明改名为国立西南联合大学。1946年迁回清华园。1949年中华人民共和国成立，清华大学进入了新的发展阶段。1952年全国高等学校院系调整后成为多科性工业大学。1978年以来逐步恢复和发展为综合性的研究型大学。', 0, 0, 'org/2019/01/qhdx-logo.png', '北京市海淀区清华大学', '2019-01-17 10:10:00.000000', 1, 'gx', 0, 0);
-INSERT INTO `organization_courseorg` VALUES (8, '南京大学', '南京大学（Nanjing University），简称“南大”，是中华人民共和国教育部直属、中央直管副部级建制的综合性全国重点大学，是历史悠久、声誉卓著的百年名校。位列首批国家“双一流“世界一流大学A类建设高校、”211工程“、”985工程”，入选“珠峰计划”、“111计划”、“2011计划”、“卓越工程师教育培养计划”、“卓越医生教育培养计划”、“卓越法律人才教育培养计划”，是九校联盟、中国大学校长联谊会、环太平洋大学联盟、21世纪学术联盟和东亚研究型大学协会成员。 [1] \r\n南京大学其学脉可追溯自孙吴永安元年（258年）的南京太学，近代校史肇始于1902年创建的三江师范学堂，此后历经两江师范学堂、南京高等师范学校、国立东南大学等历史时期，1949年由民国时期中国最高学府“国立中央大学”易名“国立南京大学”，1950年径称“南京大学”并沿用至今。1920年在中国国立高等学府中首开“女禁”，引领男女同校之风。最早在中国开展现代学术研究，建立中国最早的现代科学研究实验室，成为中国第一所以大学自治、学术自由、文理为基本兼有农工商等专门应用科、集教学和研究于一体的现代大学，被国际上誉为“东方教育的中心”', 0, 0, 'org/2019/01/njdx.jpg', '南京市鼓楼区汉口路22号', '2019-01-17 10:11:00.000000', 6, 'pxjg', 0, 0);
-INSERT INTO `organization_courseorg` VALUES (9, '慕课网6', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_Y2Tonsq.png', '南京市慕课网', '2019-01-17 10:13:00.000000', 6, 'pxjg', 0, 0);
-INSERT INTO `organization_courseorg` VALUES (10, '慕课网1', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_Gn1sRjp_INE1Mxh.png', '北京市海淀区中关村北大街', '2019-01-17 10:13:00.000000', 1, 'pxjg', 0, 0);
+INSERT INTO `organization_courseorg` VALUES (1, '慕课网', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\r\n慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。\r\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_PVa3rYn.png', '北京市海淀区中关村北大街', '2019-01-17 09:52:00.000000', 1, 'pxjg', 0, 0, '全国知名');
+INSERT INTO `organization_courseorg` VALUES (2, '慕课网3', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 1, 0, 'org/2019/01/imooc_klgAUn5.png', '广州市慕课网', '2019-01-17 10:06:00.000000', 3, 'pxjg', 0, 0, '全国知名');
+INSERT INTO `organization_courseorg` VALUES (3, '慕课网2', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_Gn1sRjp_PZLxlSY.png', '上海市慕课网', '2019-01-17 10:08:00.000000', 2, 'gr', 0, 0, '全国知名');
+INSERT INTO `organization_courseorg` VALUES (4, '慕课网4', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_OO2ykYP.png', '天津市慕课网', '2019-01-17 10:08:00.000000', 4, 'pxjg', 0, 0, '全国知名');
+INSERT INTO `organization_courseorg` VALUES (5, '慕课网5', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 1, 0, 'org/2019/01/imooc_V0TJOyb.png', '成都市慕课网', '2019-01-17 10:09:00.000000', 5, 'pxjg', 0, 0, '全国知名');
+INSERT INTO `organization_courseorg` VALUES (6, '北京大学', '北京大学（Peking University），简称“北大”，由中华人民共和国教育部直属，中央直管副部级建制，位列“211工程”、“985工程”、“世界一流大学和一流学科”，入选“基础学科拔尖学生培养试验计划”、“高等学校创新能力提升计划”、“高等学校学科创新引智计划”，为九校联盟、中国大学校长联谊会、京港大学联盟、亚洲大学联盟、东亚研究型大学协会、国际研究型大学联盟、环太平洋大学联盟、东亚四大学论坛、国际公立大学论坛、中俄综合性大学联盟成员。\r\n北京大学创立于1898年维新变法之际，初名京师大学堂，是中国近现代第一所国立综合性大学，创办之初也是国家最高教育行政机关。1912年改为国立北京大学。1937年南迁至长沙，与国立清华大学和私立南开大学组成国立长沙临时大学，1938年迁至昆明，更名为国立西南联合大学。1946年复员返回北平。1952年经全国高校院系调整，成为以文理基础学科为主的综合性大学，并自北京城内沙滩等地迁至现址。2000年与原北京医科大学合并，组建为新的北京大学。', 0, 0, 'org/2019/01/bjdx.jpg', '北京市海淀区颐和园路5号', '2019-01-17 10:09:00.000000', 1, 'gx', 0, 0, '全国知名');
+INSERT INTO `organization_courseorg` VALUES (7, '清华大学', '清华大学（Tsinghua University），简称“清华”，由中华人民共和国教育部直属，中央直管副部级建制，位列“211工程”、“985工程”、“世界一流大学和一流学科”，入选“基础学科拔尖学生培养试验计划”、“高等学校创新能力提升计划”、“高等学校学科创新引智计划”，为九校联盟、中国大学校长联谊会、东亚研究型大学协会、亚洲大学联盟、环太平洋大学联盟、清华—剑桥—MIT低碳大学联盟成员，被誉为“红色工程师的摇篮”。\r\n清华大学的前身清华学堂始建于1911年，因水木清华而得名，是清政府设立的留美预备学校，其建校的资金源于1908年美国退还的部分庚子赔款。1912年更名为清华学校。1928年更名为国立清华大学。1937年抗日战争全面爆发后南迁长沙，与北京大学、南开大学组建国立长沙临时大学，1938年迁至昆明改名为国立西南联合大学。1946年迁回清华园。1949年中华人民共和国成立，清华大学进入了新的发展阶段。1952年全国高等学校院系调整后成为多科性工业大学。1978年以来逐步恢复和发展为综合性的研究型大学。', 1, 1, 'org/2019/01/qhdx-logo.png', '北京市海淀区清华大学', '2019-01-17 10:10:00.000000', 1, 'gx', 0, 0, '全国知名');
+INSERT INTO `organization_courseorg` VALUES (8, '南京大学', '南京大学（Nanjing University），简称“南大”，是中华人民共和国教育部直属、中央直管副部级建制的综合性全国重点大学，是历史悠久、声誉卓著的百年名校。位列首批国家“双一流“世界一流大学A类建设高校、”211工程“、”985工程”，入选“珠峰计划”、“111计划”、“2011计划”、“卓越工程师教育培养计划”、“卓越医生教育培养计划”、“卓越法律人才教育培养计划”，是九校联盟、中国大学校长联谊会、环太平洋大学联盟、21世纪学术联盟和东亚研究型大学协会成员。 [1] \r\n南京大学其学脉可追溯自孙吴永安元年（258年）的南京太学，近代校史肇始于1902年创建的三江师范学堂，此后历经两江师范学堂、南京高等师范学校、国立东南大学等历史时期，1949年由民国时期中国最高学府“国立中央大学”易名“国立南京大学”，1950年径称“南京大学”并沿用至今。1920年在中国国立高等学府中首开“女禁”，引领男女同校之风。最早在中国开展现代学术研究，建立中国最早的现代科学研究实验室，成为中国第一所以大学自治、学术自由、文理为基本兼有农工商等专门应用科、集教学和研究于一体的现代大学，被国际上誉为“东方教育的中心”', 0, 0, 'org/2019/01/njdx.jpg', '南京市鼓楼区汉口路22号', '2019-01-17 10:11:00.000000', 6, 'pxjg', 0, 0, '全国知名');
+INSERT INTO `organization_courseorg` VALUES (9, '慕课网6', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_Y2Tonsq.png', '南京市慕课网', '2019-01-17 10:13:00.000000', 6, 'pxjg', 0, 0, '全国知名');
+INSERT INTO `organization_courseorg` VALUES (10, '慕课网1', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。\\r\\n    慕课网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。[1] \\r\\n4月2日，国内首个IT技能学习类应用——慕课网3.1.0版本在应用宝首发。据了解，在此次上线的版本中，慕课网新增了课程历史记录、相关课程推荐等四大功能，为用户营造更加丰富的移动端IT学习体验。', 0, 0, 'org/2019/01/imooc_Gn1sRjp_INE1Mxh.png', '北京市海淀区中关村北大街', '2019-01-17 10:13:00.000000', 1, 'pxjg', 0, 0, '全国知名');
 
 -- ----------------------------
 -- Table structure for organization_teacher
@@ -606,8 +626,8 @@ CREATE TABLE `organization_teacher`  (
 -- ----------------------------
 -- Records of organization_teacher
 -- ----------------------------
-INSERT INTO `organization_teacher` VALUES (1, 'bluusli', 5, 'xxx', 'xxx', 'xxx', 0, 0, '2019-01-18 09:50:00.000000', 1, 'teacher/2019/01/default_middile_1.png', 20);
-INSERT INTO `organization_teacher` VALUES (2, 'bobby', 3, '北京慕课', '讲师', 'xxx', 0, 0, '2019-01-18 09:51:00.000000', 2, 'teacher/2019/01/aobama.png', 20);
+INSERT INTO `organization_teacher` VALUES (1, 'bluusli', 5, 'xxx', 'xxx', 'xxx', 2, 0, '2019-01-18 09:50:00.000000', 1, 'teacher/2019/01/default_middile_1.png', 20);
+INSERT INTO `organization_teacher` VALUES (2, 'bobby', 3, '北京慕课', '讲师', 'xxx', 4, 0, '2019-01-18 09:51:00.000000', 2, 'teacher/2019/01/aobama.png', 20);
 
 -- ----------------------------
 -- Table structure for users_banner
@@ -621,7 +641,16 @@ CREATE TABLE `users_banner`  (
   `index` int(11) NOT NULL,
   `add_time` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of users_banner
+-- ----------------------------
+INSERT INTO `users_banner` VALUES (1, '第一个', 'banner/2019/01/57a801860001c34b12000460.jpg', 'http://www.imooc.com', 1, '2019-01-25 10:17:00.000000');
+INSERT INTO `users_banner` VALUES (2, '第二个', 'banner/2019/01/57aa86a0000145c512000460.jpg', 'http://www.imooc.com', 2, '2019-01-25 10:19:00.000000');
+INSERT INTO `users_banner` VALUES (3, '第三个', 'banner/2019/01/57aa86a0000145c512000460_nMwvoQD.jpg', 'http://www.imooc.com', 3, '2019-01-25 10:19:00.000000');
+INSERT INTO `users_banner` VALUES (4, '第四个', 'banner/2019/01/57a801860001c34b12000460_z4Vb8zl.jpg', 'http://www.imooc.com', 4, '2019-01-25 10:19:00.000000');
+INSERT INTO `users_banner` VALUES (5, '第五个', 'banner/2019/01/57aa86a0000145c512000460_s3w2EtL.jpg', 'http://www.imooc.com', 5, '2019-01-25 10:20:00.000000');
 
 -- ----------------------------
 -- Table structure for users_emailverifyrecord
@@ -634,7 +663,7 @@ CREATE TABLE `users_emailverifyrecord`  (
   `send_type` int(11) NOT NULL,
   `send_time` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users_emailverifyrecord
@@ -651,6 +680,9 @@ INSERT INTO `users_emailverifyrecord` VALUES (9, '1CVoio3nLngjGoFg', 'bluus_li@s
 INSERT INTO `users_emailverifyrecord` VALUES (10, '74cJk0ol4ezjjIGZ', 'bluus_li@sina.com', 1, '2019-01-16 10:05:42.945122');
 INSERT INTO `users_emailverifyrecord` VALUES (11, '0Pqp4FGptXOYHCNR', 'bluus_li@sina.com', 2, '2019-01-16 11:44:17.692881');
 INSERT INTO `users_emailverifyrecord` VALUES (12, 'd10okDay7J7nQPdT', 'bluus_li@sina.com', 2, '2019-01-16 17:31:55.202555');
+INSERT INTO `users_emailverifyrecord` VALUES (13, 'UFPoGrwcA2Ggzc4S', 'bluus_li@sina.com', 3, '2019-01-24 11:43:40.568206');
+INSERT INTO `users_emailverifyrecord` VALUES (14, 'miqz', 'bluus_li@sina.com', 3, '2019-01-24 11:45:07.876747');
+INSERT INTO `users_emailverifyrecord` VALUES (15, 'f8SkwozkpheF4qt7', 'bluus_li@sina.com', 2, '2019-01-25 11:26:29.806923');
 
 -- ----------------------------
 -- Table structure for users_userprofile
@@ -681,8 +713,8 @@ CREATE TABLE `users_userprofile`  (
 -- ----------------------------
 -- Records of users_userprofile
 -- ----------------------------
-INSERT INTO `users_userprofile` VALUES (1, 'pbkdf2_sha256$36000$6LJrZFs0hx6y$Z9uzKIILbfaIXwwJ2FYuzabvIH/DBfE6Y4kd/mkhIp4=', '2019-01-21 16:47:31.537248', 1, 'bluusli', '', '', '', 1, 1, '2019-01-14 08:06:03.522705', '', NULL, 1, '', NULL, 'courses/2019/01/540e57300001d6d906000338-240-135.jpg');
-INSERT INTO `users_userprofile` VALUES (2, 'pbkdf2_sha256$36000$VWvIoee1YO5R$047I4XiQLJMGMkdNZOGJwU6a2SS5qmz2X20KmzkNchg=', '2019-01-16 17:33:45.616314', 0, 'bluus_li@sina.com', '', '', 'bluus_li@sina.com', 0, 1, '2019-01-16 10:05:42.854391', '', NULL, 1, '', NULL, 'image/default.png');
+INSERT INTO `users_userprofile` VALUES (1, 'pbkdf2_sha256$36000$6LJrZFs0hx6y$Z9uzKIILbfaIXwwJ2FYuzabvIH/DBfE6Y4kd/mkhIp4=', '2019-01-25 10:45:11.138856', 1, 'bluusli', '', '', '', 1, 1, '2019-01-14 08:06:03.522705', '管理员', '1998-01-01', 1, '四川成都', NULL, 'image/2019/01/default_middile_7.png');
+INSERT INTO `users_userprofile` VALUES (2, 'pbkdf2_sha256$36000$YZMCwTPXAQ2X$o0SqVGxAALnR9xuVJOntgvd3TqT2r94A0eIz0d/zcgE=', '2019-01-25 10:44:35.920791', 0, 'bluus_li@sina.com', '', '', 'bluus_li@sina.com', 0, 1, '2019-01-16 10:05:42.854391', 'bluusli', '2013-01-07', 2, '四川成都', NULL, 'image/2019/01/default_middile_8_zeQCfFT.png');
 
 -- ----------------------------
 -- Table structure for users_userprofile_groups
@@ -752,7 +784,7 @@ CREATE TABLE `xadmin_log`  (
   INDEX `xadmin_log_user_id_bb16a176_fk_users_userprofile_id`(`user_id`) USING BTREE,
   CONSTRAINT `xadmin_log_content_type_id_2a6cb852_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `xadmin_log_user_id_bb16a176_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of xadmin_log
@@ -807,6 +839,13 @@ INSERT INTO `xadmin_log` VALUES (47, '2019-01-21 15:09:55.030945', '127.0.0.1', 
 INSERT INTO `xadmin_log` VALUES (48, '2019-01-21 15:09:59.307507', '127.0.0.1', '2', 'Video object', 'change', '修改 learn_time', 9, 1);
 INSERT INTO `xadmin_log` VALUES (49, '2019-01-21 15:10:03.789529', '127.0.0.1', '1', 'Video object', 'change', '修改 learn_time', 9, 1);
 INSERT INTO `xadmin_log` VALUES (50, '2019-01-21 15:18:08.723986', '127.0.0.1', '1', 'CourseResource object', 'create', '已添加。', 11, 1);
+INSERT INTO `xadmin_log` VALUES (51, '2019-01-24 17:37:47.151477', '127.0.0.1', '1', 'UserMessage object', 'create', '已添加。', 20, 1);
+INSERT INTO `xadmin_log` VALUES (52, '2019-01-24 20:05:13.239430', '127.0.0.1', '3', 'UserMessage object', 'create', '已添加。', 20, 1);
+INSERT INTO `xadmin_log` VALUES (53, '2019-01-25 10:19:19.757184', '127.0.0.1', '1', 'Banner object', 'create', '已添加。', 7, 1);
+INSERT INTO `xadmin_log` VALUES (54, '2019-01-25 10:19:37.204700', '127.0.0.1', '2', 'Banner object', 'create', '已添加。', 7, 1);
+INSERT INTO `xadmin_log` VALUES (55, '2019-01-25 10:19:52.355591', '127.0.0.1', '3', 'Banner object', 'create', '已添加。', 7, 1);
+INSERT INTO `xadmin_log` VALUES (56, '2019-01-25 10:20:02.553621', '127.0.0.1', '4', 'Banner object', 'create', '已添加。', 7, 1);
+INSERT INTO `xadmin_log` VALUES (57, '2019-01-25 10:20:12.107584', '127.0.0.1', '5', 'Banner object', 'create', '已添加。', 7, 1);
 
 -- ----------------------------
 -- Table structure for xadmin_usersettings

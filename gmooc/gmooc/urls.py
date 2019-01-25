@@ -19,7 +19,8 @@ from django.views.generic import TemplateView
 from django.views.static import serve
 
 from users.views import LoginView,RegisterView,ActiveUserView,ForgetPwdView,ResetView,ModifyPwdView,LogoutView
-from gmooc.settings import MEDIA_ROOT
+from users.views import IndexView
+from gmooc.settings import MEDIA_ROOT,STATIC_ROOT
 
 import xadmin
 
@@ -27,7 +28,7 @@ urlpatterns = [
     # 后台管理url
     url(r'^xadmin/', xadmin.site.urls),
     # 首页展示url
-    url(r'^$',TemplateView.as_view(template_name='index.html'),name='index'),
+    url(r'^$',IndexView.as_view(),name='index'),
     # 登录url
     url(r'^login/$', LoginView.as_view(), name='login'),
     # 注册url
@@ -49,6 +50,8 @@ urlpatterns = [
     # 配置上传文件的访问处理函数
     url(r'^media/(?P<path>.*)',serve,{"document_root":MEDIA_ROOT}),
 
+    url(r'^static/(?P<path>.*)', serve, {"document_root": STATIC_ROOT}),
+
     # 课程相关url配置
     url(r'^course/', include('courses.urls',namespace="course")),
 
@@ -56,3 +59,9 @@ urlpatterns = [
     url(r'^users/', include('users.urls', namespace="users")),
 
 ]
+
+# 全局错误页面的配置
+handler404 = 'users.views.page_not_found'
+handler500 = 'users.views.page_error'
+handler403 = 'users.views.page_not_Jurisdiction'
+

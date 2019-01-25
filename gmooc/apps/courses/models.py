@@ -16,6 +16,7 @@ class Courses(models.Model):
     name = models.CharField('课程名称',max_length=50)
     desc = models.CharField('课程描述',max_length=300)
     detail = models.TextField('课程详情')
+    is_banner = models.BooleanField('是否轮播',default=False)
     teacher = models.ForeignKey(Teacher,verbose_name='授课讲师',null=True,blank=True)
     degree = models.IntegerField('课程难度',choices=COUR_CHOICES,default=1)
     learn_time = models.IntegerField('学习时长(分钟数)',default=0)

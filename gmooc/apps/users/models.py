@@ -11,6 +11,7 @@ USER_CHOICES = (
 EMAIL_CHOICES = (
     (1,'注册'),
     (2,'找回密码'),
+    (3,'修改邮箱'),
 )
 
 
@@ -28,6 +29,10 @@ class UserProfile(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    def unread_nums(self):
+        from operation.models import UserMessage
+        return UserMessage.objects.filter(user=self.id,has_read=False).count()
 
 
 class EmailVerifyRecord(models.Model):
